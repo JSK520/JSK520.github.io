@@ -4,31 +4,6 @@
   
     
     <entry>
-      <title>new post.md的测试</title>
-      <link href="/posts/4d32db51/"/>
-      <url>/posts/4d32db51/</url>
-      
-        <content type="html"><![CDATA[<h1 id="测试hexo-post"><a href="#测试hexo-post" class="headerlink" title="测试hexo_post"></a>测试hexo_post</h1><hr><center>谢谢你的支持~~</center><center class="half">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/wechat_shikai.jpg" class="lozad">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/alipay_shikai.jpg" class="lozad"></center>]]></content>
-      
-      
-      <categories>
-          
-          <category> hexo_post </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> hexo_post </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>jsdelivr加速读取github文件</title>
       <link href="/posts/5a5aec9f/"/>
       <url>/posts/5a5aec9f/</url>
@@ -46,6 +21,31 @@
         <tags>
             
             <tag> jsdelivr </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>new post.md的测试</title>
+      <link href="/posts/4d32db51/"/>
+      <url>/posts/4d32db51/</url>
+      
+        <content type="html"><![CDATA[<h1 id="测试hexo-post"><a href="#测试hexo-post" class="headerlink" title="测试hexo_post"></a>测试hexo_post</h1><hr><center>谢谢你的支持~~</center><center class="half">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/wechat_shikai.jpg" class="lozad">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/alipay_shikai.jpg" class="lozad"></center>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo_post </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo_post </tag>
             
         </tags>
       
