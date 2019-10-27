@@ -4,19 +4,6 @@
   
     
     <entry>
-      <title>post.md</title>
-      <link href="/posts/7ad6c44f/"/>
-      <url>/posts/7ad6c44f/</url>
-      
-        <content type="html"><![CDATA[<hr><center>谢谢你的支持~~</center><center class="half">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/wechat_shikai.jpg" class="lozad">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/alipay_shikai.jpg" class="lozad"></center>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>jsdelivr加速读取github文件</title>
       <link href="/posts/5a5aec9f/"/>
       <url>/posts/5a5aec9f/</url>
@@ -67,31 +54,6 @@
     
     
     <entry>
-      <title>hexo 总结</title>
-      <link href="/posts/424111dd/"/>
-      <url>/posts/424111dd/</url>
-      
-        <content type="html"><![CDATA[<p>无法提交theme：<br>下面以yelee做例子<br>cd theme/<br>删除 .git文件<br>git rm -cached yelee/<br>git add yelee</p><p>如果出现 lock情况：<br>rm -f xx/.git/index.lock</p><h2 id="github照片上传："><a href="#github照片上传：" class="headerlink" title="github照片上传："></a>github照片上传：</h2><p>查看远程仓库的版本：<br>git ls-remote</p><p>直接覆盖线上版本：<br>git push -f origin master:tags/v1.1</p><hr><center>谢谢你的支持~~</center><center class="half">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/wechat_shikai.jpg" class="lozad">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/alipay_shikai.jpg" class="lozad"></center>]]></content>
-      
-      
-      <categories>
-          
-          <category> hexo </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> hexo </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Hello World</title>
       <link href="/posts/4a17b156/"/>
       <url>/posts/4a17b156/</url>
@@ -109,6 +71,31 @@
         <tags>
             
             <tag> Hello World </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo 总结</title>
+      <link href="/posts/424111dd/"/>
+      <url>/posts/424111dd/</url>
+      
+        <content type="html"><![CDATA[<p>无法提交theme：<br>下面以yelee做例子<br>cd theme/<br>删除 .git文件<br>git rm -cached yelee/<br>git add yelee</p><p>如果出现 lock情况：<br>rm -f xx/.git/index.lock</p><h2 id="github照片上传："><a href="#github照片上传：" class="headerlink" title="github照片上传："></a>github照片上传：</h2><p>查看远程仓库的版本：<br>git ls-remote</p><p>直接覆盖线上版本：<br>git push -f origin master:tags/v1.1</p><hr><center>谢谢你的支持~~</center><center class="half">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/wechat_shikai.jpg" class="lozad">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/alipay_shikai.jpg" class="lozad"></center>]]></content>
+      
+      
+      <categories>
+          
+          <category> hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
             
         </tags>
       
