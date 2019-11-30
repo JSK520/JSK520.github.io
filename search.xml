@@ -113,9 +113,9 @@
             
             <tag> jvm </tag>
             
-            <tag> java </tag>
-            
             <tag> hide </tag>
+            
+            <tag> java </tag>
             
             <tag> oom </tag>
             
@@ -177,9 +177,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> 优先级队列 </tag>
-            
             <tag> java </tag>
+            
+            <tag> 优先级队列 </tag>
             
         </tags>
       
