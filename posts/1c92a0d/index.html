@@ -132,7 +132,7 @@
 <li>roll_pointer：指向undo日志的地址（undo日志的结构后面会总结，简单理解就是每次修改操作的记录）</li>
 </ol>
 <h3 id="insert-undo"><a href="#insert-undo" class="headerlink" title="insert undo"></a>insert undo</h3><p>指向insert undo（insert的操作）的链接会在提交事务时就没用了，日志文件会被系统回收，所以没有版本链</p>
-<h3 id="update-undo"><a href="#update-undo" class="headerlink" title="update undo"></a>update undo</h3><p>每修改一条记录，都会有相应的undo日志，rool_pointer把这些undo日志链接成链表，这个链表就称为版本链。</p>
+<h3 id="update-undo"><a href="#update-undo" class="headerlink" title="update undo"></a>update undo</h3><p>每修改一条记录，都会有相应的undo日志，roll_pointer把这些undo日志链接成链表，这个链表就称为版本链。</p>
 <hr>
 <center>创作不易，谢谢你的支持~~</center>
 <center class="half">
