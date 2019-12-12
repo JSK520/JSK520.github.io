@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>java 逃逸分析</title>
+      <title>jvm 逃逸分析</title>
       <link href="/posts/5d514306/"/>
       <url>/posts/5d514306/</url>
       
@@ -198,9 +198,9 @@
       
         <tags>
             
-            <tag> jvm </tag>
-            
             <tag> java </tag>
+            
+            <tag> jvm </tag>
             
             <tag> hide </tag>
             
@@ -422,31 +422,6 @@
     
     
     <entry>
-      <title>jsdelivr加速读取github文件</title>
-      <link href="/posts/5a5aec9f/"/>
-      <url>/posts/5a5aec9f/</url>
-      
-        <content type="html"><![CDATA[<h2 id="jsdelivr是什么"><a href="#jsdelivr是什么" class="headerlink" title="jsdelivr是什么"></a>jsdelivr是什么</h2><p>github：<a href="https://github.com/jsdelivr/jsdelivr" target="_blank" rel="noopener">https://github.com/jsdelivr/jsdelivr</a><br>官网：<a href="https://www.jsdelivr.com/" target="_blank" rel="noopener">https://www.jsdelivr.com/</a><br>免费的公用CDN加速服务网（CDN是就近服务器访问，所以会加速）</p><h2 id="作用是什么"><a href="#作用是什么" class="headerlink" title="作用是什么"></a>作用是什么</h2><p>可以加速访问文件、图片，而本文章则介绍如何利用jsdelivr加速访问github照片为主<br>之所以需要用到jsdelivr加速访问照片，在于可<strong>方便快速</strong>管理 hexo 里面的图片链接</p><h2 id="如何操作"><a href="#如何操作" class="headerlink" title="如何操作"></a>如何操作</h2><p>举我个人例子的大致过程：</p><ol><li>生成新的github仓库</li><li>构建文件夹用于存放照片文件 <a href="https://github.com/JSK520/blog_web/blob/master/photos/person.jpg" target="_blank" rel="noopener">github目录</a></li><li>关键一步：点击项目上端的<strong>release</strong> 创建版本：<br><img alt="release的创建简介" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/photos/release_v1.jpg" class="lozad"></li><li>创建好后，点击进入图片链接：<br>那我的做例子，进入github照片路径为：<br><a href="https://github.com/JSK520/blog_web/blob/v1.1/photos/release_v1.jpg" target="_blank" rel="noopener">https://github.com/JSK520/blog_web/blob/v1.1/photos/release_v1.jpg</a></li><li>把对应路径变更为以下方式即可<br><a href="https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/photos/release_v1.jpg" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/photos/release_v1.jpg</a></li></ol><p>仔细看我们发现：<br><a href="https://github.com/JSK520/blog_web/blob/v1.1/" target="_blank" rel="noopener">https://github.com/JSK520/blog_web/blob/v1.1/</a><br>这个前缀替换成了<br><a href="https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/</a><br>而 /photos/release_v1.jpg 是github的文件名</p><hr><center>谢谢你的支持~~</center><center class="half">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/wechat_shikai.jpg" class="lozad">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/alipay_shikai.jpg" class="lozad"></center>]]></content>
-      
-      
-      <categories>
-          
-          <category> jsdelivr </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> jsdelivr </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>markdown 样式总结</title>
       <link href="/posts/c491c9ac/"/>
       <url>/posts/c491c9ac/</url>
@@ -464,6 +439,31 @@
         <tags>
             
             <tag> markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>jsdelivr加速读取github文件</title>
+      <link href="/posts/5a5aec9f/"/>
+      <url>/posts/5a5aec9f/</url>
+      
+        <content type="html"><![CDATA[<h2 id="jsdelivr是什么"><a href="#jsdelivr是什么" class="headerlink" title="jsdelivr是什么"></a>jsdelivr是什么</h2><p>github：<a href="https://github.com/jsdelivr/jsdelivr" target="_blank" rel="noopener">https://github.com/jsdelivr/jsdelivr</a><br>官网：<a href="https://www.jsdelivr.com/" target="_blank" rel="noopener">https://www.jsdelivr.com/</a><br>免费的公用CDN加速服务网（CDN是就近服务器访问，所以会加速）</p><h2 id="作用是什么"><a href="#作用是什么" class="headerlink" title="作用是什么"></a>作用是什么</h2><p>可以加速访问文件、图片，而本文章则介绍如何利用jsdelivr加速访问github照片为主<br>之所以需要用到jsdelivr加速访问照片，在于可<strong>方便快速</strong>管理 hexo 里面的图片链接</p><h2 id="如何操作"><a href="#如何操作" class="headerlink" title="如何操作"></a>如何操作</h2><p>举我个人例子的大致过程：</p><ol><li>生成新的github仓库</li><li>构建文件夹用于存放照片文件 <a href="https://github.com/JSK520/blog_web/blob/master/photos/person.jpg" target="_blank" rel="noopener">github目录</a></li><li>关键一步：点击项目上端的<strong>release</strong> 创建版本：<br><img alt="release的创建简介" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/photos/release_v1.jpg" class="lozad"></li><li>创建好后，点击进入图片链接：<br>那我的做例子，进入github照片路径为：<br><a href="https://github.com/JSK520/blog_web/blob/v1.1/photos/release_v1.jpg" target="_blank" rel="noopener">https://github.com/JSK520/blog_web/blob/v1.1/photos/release_v1.jpg</a></li><li>把对应路径变更为以下方式即可<br><a href="https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/photos/release_v1.jpg" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/photos/release_v1.jpg</a></li></ol><p>仔细看我们发现：<br><a href="https://github.com/JSK520/blog_web/blob/v1.1/" target="_blank" rel="noopener">https://github.com/JSK520/blog_web/blob/v1.1/</a><br>这个前缀替换成了<br><a href="https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/</a><br>而 /photos/release_v1.jpg 是github的文件名</p><hr><center>谢谢你的支持~~</center><center class="half">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/wechat_shikai.jpg" class="lozad">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/alipay_shikai.jpg" class="lozad"></center>]]></content>
+      
+      
+      <categories>
+          
+          <category> jsdelivr </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> jsdelivr </tag>
             
         </tags>
       
