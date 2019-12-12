@@ -11,6 +11,22 @@
         <content type="html"><![CDATA[<h1 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h1><p>逃逸分析是java JIT的一个优化方案。</p><h2 id="什么是逃逸分析"><a href="#什么是逃逸分析" class="headerlink" title="什么是逃逸分析"></a>什么是逃逸分析</h2><p>逃逸分析需要分开两个词讨论，分别是逃逸和分析</p><h3 id="什么是逃逸"><a href="#什么是逃逸" class="headerlink" title="什么是逃逸"></a>什么是逃逸</h3><p>逃逸分析的基本行为就是分析对象动态<code>作用域</code>：当一个对象在方法中被定义后，它可能<code>被外部方法所引用</code>，例如作为调用参数传递到其他地方中，称为方法逃逸。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">skip</span></span>&#123;</span><br><span class="line"><span class="keyword">public</span> String[] skip()&#123;</span><br><span class="line">       String[] str = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line">       <span class="keyword">return</span> str;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>上面对象定义后，return出方法，这种现象就叫逃逸</p><h1 id="逃逸分析的作用"><a href="#逃逸分析的作用" class="headerlink" title="逃逸分析的作用"></a>逃逸分析的作用</h1><p>使用逃逸分析可以优化三个方面：</p><ol><li>同步省略</li><li>栈上分配</li><li>分离对象或标量替换</li></ol><h2 id="同步省略"><a href="#同步省略" class="headerlink" title="同步省略"></a>同步省略</h2><p>如果一个对象被发现只能从一个线程被访问到，那么对于这个对象的操作可以不考虑同步。</p><blockquote><p>即如果一个加了锁的方法，我发现该方法并没有逃逸，可以把锁消除</p></blockquote><h2 id="栈上分配"><a href="#栈上分配" class="headerlink" title="栈上分配"></a>栈上分配</h2><p>如果一个对象没有逃逸出方法，可能会把对象分配到栈上（正常分配到堆上），好处在：不需要gc，会跟着线程生命周期而结束。</p><h2 id="分离对象或标量替换"><a href="#分离对象或标量替换" class="headerlink" title="分离对象或标量替换"></a>分离对象或标量替换</h2><p>如果逃逸分析证明一个对象不会被外部访问。并且这个对象可以被拆散的话，那程序真正执行的时候可能不创建这个对象，而改为直接创建它的若干个被这个方法使用到的成员变量来替换。</p><h1 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h1><p>java7以后默认开启，关闭要指定：-XX:-DoEscapeAnalysis</p><hr><center>创作不易，谢谢你的支持~~</center><center class="half">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/wechat_shikai.jpg" class="lozad">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/alipay_shikai.jpg" class="lozad"></center>]]></content>
       
       
+      <categories>
+          
+          <category> jvm </category>
+          
+          <category> 逃逸分析 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> java </tag>
+            
+            <tag> 逃逸分析 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -182,11 +198,11 @@
       
         <tags>
             
+            <tag> java </tag>
+            
             <tag> jvm </tag>
             
             <tag> hide </tag>
-            
-            <tag> java </tag>
             
             <tag> oom </tag>
             
@@ -246,11 +262,11 @@
       
         <tags>
             
+            <tag> java </tag>
+            
             <tag> 算法 </tag>
             
             <tag> 优先级队列 </tag>
-            
-            <tag> java </tag>
             
         </tags>
       
@@ -406,31 +422,6 @@
     
     
     <entry>
-      <title>jsdelivr加速读取github文件</title>
-      <link href="/posts/5a5aec9f/"/>
-      <url>/posts/5a5aec9f/</url>
-      
-        <content type="html"><![CDATA[<h2 id="jsdelivr是什么"><a href="#jsdelivr是什么" class="headerlink" title="jsdelivr是什么"></a>jsdelivr是什么</h2><p>github：<a href="https://github.com/jsdelivr/jsdelivr" target="_blank" rel="noopener">https://github.com/jsdelivr/jsdelivr</a><br>官网：<a href="https://www.jsdelivr.com/" target="_blank" rel="noopener">https://www.jsdelivr.com/</a><br>免费的公用CDN加速服务网（CDN是就近服务器访问，所以会加速）</p><h2 id="作用是什么"><a href="#作用是什么" class="headerlink" title="作用是什么"></a>作用是什么</h2><p>可以加速访问文件、图片，而本文章则介绍如何利用jsdelivr加速访问github照片为主<br>之所以需要用到jsdelivr加速访问照片，在于可<strong>方便快速</strong>管理 hexo 里面的图片链接</p><h2 id="如何操作"><a href="#如何操作" class="headerlink" title="如何操作"></a>如何操作</h2><p>举我个人例子的大致过程：</p><ol><li>生成新的github仓库</li><li>构建文件夹用于存放照片文件 <a href="https://github.com/JSK520/blog_web/blob/master/photos/person.jpg" target="_blank" rel="noopener">github目录</a></li><li>关键一步：点击项目上端的<strong>release</strong> 创建版本：<br><img alt="release的创建简介" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/photos/release_v1.jpg" class="lozad"></li><li>创建好后，点击进入图片链接：<br>那我的做例子，进入github照片路径为：<br><a href="https://github.com/JSK520/blog_web/blob/v1.1/photos/release_v1.jpg" target="_blank" rel="noopener">https://github.com/JSK520/blog_web/blob/v1.1/photos/release_v1.jpg</a></li><li>把对应路径变更为以下方式即可<br><a href="https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/photos/release_v1.jpg" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/photos/release_v1.jpg</a></li></ol><p>仔细看我们发现：<br><a href="https://github.com/JSK520/blog_web/blob/v1.1/" target="_blank" rel="noopener">https://github.com/JSK520/blog_web/blob/v1.1/</a><br>这个前缀替换成了<br><a href="https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/</a><br>而 /photos/release_v1.jpg 是github的文件名</p><hr><center>谢谢你的支持~~</center><center class="half">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/wechat_shikai.jpg" class="lozad">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/alipay_shikai.jpg" class="lozad"></center>]]></content>
-      
-      
-      <categories>
-          
-          <category> jsdelivr </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> jsdelivr </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>markdown 样式总结</title>
       <link href="/posts/c491c9ac/"/>
       <url>/posts/c491c9ac/</url>
@@ -448,6 +439,31 @@
         <tags>
             
             <tag> markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>jsdelivr加速读取github文件</title>
+      <link href="/posts/5a5aec9f/"/>
+      <url>/posts/5a5aec9f/</url>
+      
+        <content type="html"><![CDATA[<h2 id="jsdelivr是什么"><a href="#jsdelivr是什么" class="headerlink" title="jsdelivr是什么"></a>jsdelivr是什么</h2><p>github：<a href="https://github.com/jsdelivr/jsdelivr" target="_blank" rel="noopener">https://github.com/jsdelivr/jsdelivr</a><br>官网：<a href="https://www.jsdelivr.com/" target="_blank" rel="noopener">https://www.jsdelivr.com/</a><br>免费的公用CDN加速服务网（CDN是就近服务器访问，所以会加速）</p><h2 id="作用是什么"><a href="#作用是什么" class="headerlink" title="作用是什么"></a>作用是什么</h2><p>可以加速访问文件、图片，而本文章则介绍如何利用jsdelivr加速访问github照片为主<br>之所以需要用到jsdelivr加速访问照片，在于可<strong>方便快速</strong>管理 hexo 里面的图片链接</p><h2 id="如何操作"><a href="#如何操作" class="headerlink" title="如何操作"></a>如何操作</h2><p>举我个人例子的大致过程：</p><ol><li>生成新的github仓库</li><li>构建文件夹用于存放照片文件 <a href="https://github.com/JSK520/blog_web/blob/master/photos/person.jpg" target="_blank" rel="noopener">github目录</a></li><li>关键一步：点击项目上端的<strong>release</strong> 创建版本：<br><img alt="release的创建简介" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/photos/release_v1.jpg" class="lozad"></li><li>创建好后，点击进入图片链接：<br>那我的做例子，进入github照片路径为：<br><a href="https://github.com/JSK520/blog_web/blob/v1.1/photos/release_v1.jpg" target="_blank" rel="noopener">https://github.com/JSK520/blog_web/blob/v1.1/photos/release_v1.jpg</a></li><li>把对应路径变更为以下方式即可<br><a href="https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/photos/release_v1.jpg" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/photos/release_v1.jpg</a></li></ol><p>仔细看我们发现：<br><a href="https://github.com/JSK520/blog_web/blob/v1.1/" target="_blank" rel="noopener">https://github.com/JSK520/blog_web/blob/v1.1/</a><br>这个前缀替换成了<br><a href="https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/</a><br>而 /photos/release_v1.jpg 是github的文件名</p><hr><center>谢谢你的支持~~</center><center class="half">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/wechat_shikai.jpg" class="lozad">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/alipay_shikai.jpg" class="lozad"></center>]]></content>
+      
+      
+      <categories>
+          
+          <category> jsdelivr </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> jsdelivr </tag>
             
         </tags>
       
