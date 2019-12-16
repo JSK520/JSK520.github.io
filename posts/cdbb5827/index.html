@@ -179,8 +179,8 @@
 </ol>
 <p>解决方案(部分或完全回滚其中一个事务)：</p>
 <ol>
-<li>wait-for graph 算法来主动进行死锁检测。InnoDB处理死锁的方法：将持有最少行级的排它锁的事务进行回滚(比较简单的回滚算法)</li>
-<li>innodb_lock_wait_timeout等待锁超时回滚事务.死锁超时机制，超时后放弃对锁的请求</li>
+<li><code>wait-for graph 算法来主动进行死锁检测</code>。InnoDB处理死锁的方法：将持有最少行级的排它锁的事务进行回滚(比较简单的回滚算法)</li>
+<li><code>innodb_lock_wait_timeout等待锁超时回滚事务</code>。死锁超时机制，超时后放弃对锁的请求</li>
 </ol>
 <h2 id="优化锁机制"><a href="#优化锁机制" class="headerlink" title="优化锁机制"></a>优化锁机制</h2><ol>
 <li>尽量使用较低的隔离级别；</li>
