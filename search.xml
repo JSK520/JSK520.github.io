@@ -256,13 +256,13 @@
       
         <tags>
             
-            <tag> java </tag>
-            
             <tag> jvm </tag>
             
-            <tag> oom </tag>
+            <tag> java </tag>
             
             <tag> hide </tag>
+            
+            <tag> oom </tag>
             
         </tags>
       
@@ -291,9 +291,9 @@
             
             <tag> 算法 </tag>
             
-            <tag> hide </tag>
-            
             <tag> 剑指offer </tag>
+            
+            <tag> hide </tag>
             
         </tags>
       
