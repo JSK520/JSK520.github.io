@@ -563,7 +563,7 @@
       <link href="/posts/424111dd/"/>
       <url>/posts/424111dd/</url>
       
-        <content type="html"><![CDATA[<p>无法提交theme：<br>下面以yelee做例子<br>cd theme/<br>删除 .git文件<br>git rm -cached yelee/<br>git add yelee</p><p>如果出现 lock情况：<br>rm -f xx/.git/index.lock</p><h2 id="github照片上传："><a href="#github照片上传：" class="headerlink" title="github照片上传："></a>github照片上传：</h2><p>查看远程仓库的版本：<br>git ls-remote</p><p>直接覆盖线上版本：<br>git push -f origin master:tags/v1.1</p><hr><center>谢谢你的支持~~</center><center class="half">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/wechat_shikai.jpg" class="lozad">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/alipay_shikai.jpg" class="lozad"></center>]]></content>
+        <content type="html"><![CDATA[<p>无法提交theme：<br>下面以yelee做例子<br>cd theme/<br>删除 .git文件<br>git rm -cached yelee/<br>git add yelee</p><p>如果出现 lock情况：<br>rm -f xx/.git/index.lock</p><h2 id="github照片上传："><a href="#github照片上传：" class="headerlink" title="github照片上传："></a>github照片上传：</h2><p>查看远程仓库的版本：<br>git ls-remote</p><p>直接覆盖线上版本：<br>git push -f origin master:tags/v1.1</p><h2 id="部署命令"><a href="#部署命令" class="headerlink" title="部署命令"></a>部署命令</h2><p>hexo -g;hexo d</p><hr><center>谢谢你的支持~~</center><center class="half">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/wechat_shikai.jpg" class="lozad">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/alipay_shikai.jpg" class="lozad"></center>]]></content>
       
       
       <categories>
