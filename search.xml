@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>JVM常量池分类及介绍</title>
+      <link href="/posts/48f0de66/"/>
+      <url>/posts/48f0de66/</url>
+      
+        <content type="html"><![CDATA[<h1 id="JVM常量池分类及介绍"><a href="#JVM常量池分类及介绍" class="headerlink" title="JVM常量池分类及介绍"></a>JVM常量池分类及介绍</h1><p>常量池有以下三种：</p><ul><li>类文件常量池/静态常量池</li><li>运行时常量池</li><li>字符串常量池</li></ul><h2 id="类文件常量池-静态常量池"><a href="#类文件常量池-静态常量池" class="headerlink" title="类文件常量池/静态常量池"></a>类文件常量池/静态常量池</h2><h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h3><p>class文件编译生成class字节码文件，其结构有一项是常量池，用于存放字面量和符号引用。这部分数据在类加载后会进入方法区的运行时常量池。</p><h3 id="存什么"><a href="#存什么" class="headerlink" title="存什么"></a>存什么</h3><p>存放编译器生成的字面量和符号引用</p><p>关于相关概念做以下解释</p><ul><li>字面量：1.文本字符串 2.八种基本类型的值 3.被声明为final的常量等;</li></ul><blockquote><p>String s = “abc”  abc就是字面量</p></blockquote><ul><li>符号引用：1.类和方法全限定名 2.字段名称和描述 3. 方法名称和描述</li></ul><blockquote><p>存在符号引用的原因是，在未类加载的时候，java类并不知道所引用目标的内存地址，所以需要一个符号来无歧义描述和定位到目标。举例，在编译时 A类引用了B类，但是A类并不知道B类的内存地址，所以先用 address.B 来描述引用了B类</p></blockquote><p>讲到符号引用需要牵扯到直接引用，因为class常量池数据加载后会落到运行时常量池，在运行时常量池中，符号引用会变成直接引用</p><ul><li>直接引用：1. 直接指向目标的指针（指向方法区的指针） 2. 相对偏移量（指向实例变量、实例方法的直接引用都是偏移量） 3. 间接定位对象句柄</li></ul><p>可以认为直接引用就是程序运行时可以定位到引用东西（类，方法，变量，对象）的地址</p><h2 id="字符串常量池"><a href="#字符串常量池" class="headerlink" title="字符串常量池"></a>字符串常量池</h2><h3 id="是什么-1"><a href="#是什么-1" class="headerlink" title="是什么"></a>是什么</h3><p>在HotSpot VM里实现的string pool是一个哈希表，java8默认大小值为60013，可以通过-XX:StringTableSize进行设置，被所有类共享，每个实例只有一份</p><h3 id="存什么-1"><a href="#存什么-1" class="headerlink" title="存什么"></a>存什么</h3><p>StringPool中存的是对象实例的引用值，具体的实例分配到jvm的堆里</p><h2 id="运行时常量池"><a href="#运行时常量池" class="headerlink" title="运行时常量池"></a>运行时常量池</h2><h3 id="是什么-2"><a href="#是什么-2" class="headerlink" title="是什么"></a>是什么</h3><p>JVM必须经过加载、连接、初始化，而连接又包括验证、准备、解析。在加载的时候，静态常量池的内容会加载到运行时常量池中，如果发现是成员字符串，字符串就会被装载到字符串常量池中，如果是局部字符串，则在执行到相关代码时才会用到字符串常量池。在解析阶段，会把静态常量池的符号引用转成直接引用。</p><h3 id="存什么-2"><a href="#存什么-2" class="headerlink" title="存什么"></a>存什么</h3><ul><li>class文件元信息描述</li><li>编译后的代码数据</li><li>引用类型数据</li><li>类文件常量池</li></ul><hr><center>创作不易，谢谢你的支持~~</center><center class="half">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/wechat_shikai.jpg" class="lozad">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/alipay_shikai.jpg" class="lozad"></center>]]></content>
+      
+      
+      <categories>
+          
+          <category> jvm </category>
+          
+          <category> 常量池 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> jvm </tag>
+            
+            <tag> 常量池 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JVM OOM 汇总及介绍</title>
       <link href="/posts/91f0cf3/"/>
       <url>/posts/91f0cf3/</url>
@@ -285,11 +314,11 @@
       
         <tags>
             
+            <tag> java </tag>
+            
             <tag> jvm </tag>
             
             <tag> oom </tag>
-            
-            <tag> java </tag>
             
             <tag> hide </tag>
             
