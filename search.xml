@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>jvm区域划分及存放数据</title>
+      <link href="/posts/1a869dfe/"/>
+      <url>/posts/1a869dfe/</url>
+      
+        <content type="html"><![CDATA[<h1 id="区域划分及存放数据"><a href="#区域划分及存放数据" class="headerlink" title="区域划分及存放数据"></a>区域划分及存放数据</h1><h2 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>方法区是逻辑概念，在jdk8以前称永久代，jdk8以后称元空间，并把元空间放到直接内存中，但还是受gc管理，所以会有OOM问题。这里我们只讲java8里的元空间</p><h3 id="存放数据："><a href="#存放数据：" class="headerlink" title="存放数据："></a>存放数据：</h3><ol><li>类和类加载器的元数据</li><li><a href="http://jskblog.xyz/posts/48f0de66/">运行时常量池</a></li></ol><h3 id="永久代和元空间的区别"><a href="#永久代和元空间的区别" class="headerlink" title="永久代和元空间的区别"></a>永久代和元空间的区别</h3><ol><li>永久代存的字面量（字符串常量池）和类的静态常量都迁到堆里生成</li><li>元空间放到本地内存中，默认无限大小，但可以设置大小，设置大小后会受jvm GC管理</li></ol><h2 id="堆区"><a href="#堆区" class="headerlink" title="堆区"></a>堆区</h2><h3 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h3><p>用于存放对象实例的区域。垃圾收集器主要关注区</p><h3 id="存放数据"><a href="#存放数据" class="headerlink" title="存放数据"></a>存放数据</h3><p>对象实例存储的区域（实例对象、成员变量（在实例对象里）、字面量、静态常量等）</p><h2 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h2><h3 id="概念-2"><a href="#概念-2" class="headerlink" title="概念"></a>概念</h3><p>线程私有，用于代表当前线程所执行的字节码行号指示器。</p><h3 id="存放数据-1"><a href="#存放数据-1" class="headerlink" title="存放数据"></a>存放数据</h3><p>通过改变这个计数器的值来选取下一条需要执行的字节码指令</p><h2 id="虚拟机栈"><a href="#虚拟机栈" class="headerlink" title="虚拟机栈"></a>虚拟机栈</h2><h3 id="概念-3"><a href="#概念-3" class="headerlink" title="概念"></a>概念</h3><p>每个方法会创建一个栈帧，线程私有，会出现oom区域</p><blockquote><p>一般是 java.lang.StackOverflowError，听说多线程出错也会报OOM，我没试过</p></blockquote><p>在编译的时候，多大的局部变量表和多深的操作数栈都已经确定了</p><h3 id="存放数据-2"><a href="#存放数据-2" class="headerlink" title="存放数据"></a>存放数据</h3><ol><li>局部变量表</li></ol><blockquote><p>存放方法参数和方法内部定义的局部变量，成员变量存在堆里。原始类型的局部变量数据也是存到栈中。</p></blockquote><ol start="2"><li>操作数栈</li></ol><blockquote><p>方法的操作在操作数栈中完成，每个字节码指令往操作数栈写入和提取的过程就是入栈和出栈的过程</p></blockquote><ol start="3"><li>动态链接方法</li></ol><blockquote><p>每个栈帧都包含一个指向运行时常量池中该栈帧所属方法的引用（每个栈帧有自己所属的方法），持有这个引用时为了可以支持方法在调用过程中把符号引用转成直接引用。  </p></blockquote><blockquote><p>静态链接的有 static、final、private修饰的方法，java天生拥有可以动态扩展的语言特性</p></blockquote><ol start="4"><li>返回地址</li></ol><blockquote><p>1、正常完成出口，程序计数器会记录返回地址<br>2、异常完成出口，异常处理器表来确认返回地址</p></blockquote><h2 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h2><h3 id="概念-4"><a href="#概念-4" class="headerlink" title="概念"></a>概念</h3><p>线程私有，与native方法有关</p><h1 id="堆区划分"><a href="#堆区划分" class="headerlink" title="堆区划分"></a>堆区划分</h1><p>在jvm的区域划分里面，堆区的学习较为重要，因为垃圾回收的主要区域就在堆区，所以对堆区概念的学习与认识是很有必要。</p><h2 id="堆区划分-1"><a href="#堆区划分-1" class="headerlink" title="堆区划分"></a>堆区划分</h2><p>堆区的划分更多的是一种概念性的东西，主要分以下几个区域：</p><ol><li><p>新生代</p><ol><li><p>伊甸区</p></li><li><p>两个存活区</p></li><li><p>TLAB，全称Thread local allocation buffer，线程本地分配缓存区</p><blockquote><p>TLAB默认占新生代1%，默认开启，通过 -XX:TLABWasteTargetPercent 设置占用大小。作用在他是线程独有的，所以可以避免线程间资源分配冲突</p></blockquote><p>伊甸区和两个存活区比例默认为：8:1:1  </p></li></ol></li><li><p>老年代</p></li></ol><p>新生代：老年代默认比例为 1:2</p><h2 id="G1和其他回收器的区域划分"><a href="#G1和其他回收器的区域划分" class="headerlink" title="G1和其他回收器的区域划分"></a>G1和其他回收器的区域划分</h2><p>G1的堆区分布也是有以上的概念性东西，但不同的点在于：</p><p>G1：是region作为内存最小单位，新生代老年代是随机分布的。所以内存碎片是相对于region来说。</p><p>其他回收器：新生代老年代都是连续的内存空间。内存碎片是相对于整个<code>代</code>来说的。即新生代是连续的内存空间，老年代也是。</p><h1 id="延伸阅读"><a href="#延伸阅读" class="headerlink" title="延伸阅读"></a>延伸阅读</h1><p>通过把大致的内存区域罗列出来，我们会发现，上面的概念中提到oom，所以关于oom会涉及到两个点：</p><ol><li><a href="http://jskblog.xyz/posts/91f0cf3/">oom的分类</a> </li><li><a href="http://jskblog.xyz/posts/62a5eeb2/">垃圾回收机制</a></li></ol><p><a href="https://www.jianshu.com/p/ecfcc9fb1de7" target="_blank" rel="noopener">参考</a></p><hr><center>创作不易，谢谢你的支持~~</center><center class="half">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/wechat_shikai.jpg" class="lozad">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/alipay_shikai.jpg" class="lozad"></center>]]></content>
+      
+      
+      <categories>
+          
+          <category> jvm </category>
+          
+          <category> 内存结构 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> jvm </tag>
+            
+            <tag> 内存结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>jvm垃圾回收知识汇总</title>
       <link href="/posts/62a5eeb2/"/>
       <url>/posts/62a5eeb2/</url>
@@ -374,9 +403,9 @@
       
         <tags>
             
-            <tag> jvm </tag>
-            
             <tag> java </tag>
+            
+            <tag> jvm </tag>
             
             <tag> oom </tag>
             
@@ -567,31 +596,6 @@
     
     
     <entry>
-      <title>jsdelivr加速读取github文件</title>
-      <link href="/posts/5a5aec9f/"/>
-      <url>/posts/5a5aec9f/</url>
-      
-        <content type="html"><![CDATA[<h2 id="jsdelivr是什么"><a href="#jsdelivr是什么" class="headerlink" title="jsdelivr是什么"></a>jsdelivr是什么</h2><p>github：<a href="https://github.com/jsdelivr/jsdelivr" target="_blank" rel="noopener">https://github.com/jsdelivr/jsdelivr</a><br>官网：<a href="https://www.jsdelivr.com/" target="_blank" rel="noopener">https://www.jsdelivr.com/</a><br>免费的公用CDN加速服务网（CDN是就近服务器访问，所以会加速）</p><h2 id="作用是什么"><a href="#作用是什么" class="headerlink" title="作用是什么"></a>作用是什么</h2><p>可以加速访问文件、图片，而本文章则介绍如何利用jsdelivr加速访问github照片为主<br>之所以需要用到jsdelivr加速访问照片，在于可<strong>方便快速</strong>管理 hexo 里面的图片链接</p><h2 id="如何操作"><a href="#如何操作" class="headerlink" title="如何操作"></a>如何操作</h2><p>举我个人例子的大致过程：</p><ol><li>生成新的github仓库</li><li>构建文件夹用于存放照片文件 <a href="https://github.com/JSK520/blog_web/blob/master/photos/person.jpg" target="_blank" rel="noopener">github目录</a></li><li>关键一步：点击项目上端的<strong>release</strong> 创建版本：<br><img alt="release的创建简介" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/photos/release_v1.jpg" class="lozad"></li><li>创建好后，点击进入图片链接：<br>那我的做例子，进入github照片路径为：<br><a href="https://github.com/JSK520/blog_web/blob/v1.1/photos/release_v1.jpg" target="_blank" rel="noopener">https://github.com/JSK520/blog_web/blob/v1.1/photos/release_v1.jpg</a></li><li>把对应路径变更为以下方式即可<br><a href="https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/photos/release_v1.jpg" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/photos/release_v1.jpg</a></li></ol><p>仔细看我们发现：<br><a href="https://github.com/JSK520/blog_web/blob/v1.1/" target="_blank" rel="noopener">https://github.com/JSK520/blog_web/blob/v1.1/</a><br>这个前缀替换成了<br><a href="https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/</a><br>而 /photos/release_v1.jpg 是github的文件名</p><hr><center>谢谢你的支持~~</center><center class="half">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/wechat_shikai.jpg" class="lozad">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/alipay_shikai.jpg" class="lozad"></center>]]></content>
-      
-      
-      <categories>
-          
-          <category> jsdelivr </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> jsdelivr </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>markdown 样式总结</title>
       <link href="/posts/c491c9ac/"/>
       <url>/posts/c491c9ac/</url>
@@ -609,6 +613,31 @@
         <tags>
             
             <tag> markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>jsdelivr加速读取github文件</title>
+      <link href="/posts/5a5aec9f/"/>
+      <url>/posts/5a5aec9f/</url>
+      
+        <content type="html"><![CDATA[<h2 id="jsdelivr是什么"><a href="#jsdelivr是什么" class="headerlink" title="jsdelivr是什么"></a>jsdelivr是什么</h2><p>github：<a href="https://github.com/jsdelivr/jsdelivr" target="_blank" rel="noopener">https://github.com/jsdelivr/jsdelivr</a><br>官网：<a href="https://www.jsdelivr.com/" target="_blank" rel="noopener">https://www.jsdelivr.com/</a><br>免费的公用CDN加速服务网（CDN是就近服务器访问，所以会加速）</p><h2 id="作用是什么"><a href="#作用是什么" class="headerlink" title="作用是什么"></a>作用是什么</h2><p>可以加速访问文件、图片，而本文章则介绍如何利用jsdelivr加速访问github照片为主<br>之所以需要用到jsdelivr加速访问照片，在于可<strong>方便快速</strong>管理 hexo 里面的图片链接</p><h2 id="如何操作"><a href="#如何操作" class="headerlink" title="如何操作"></a>如何操作</h2><p>举我个人例子的大致过程：</p><ol><li>生成新的github仓库</li><li>构建文件夹用于存放照片文件 <a href="https://github.com/JSK520/blog_web/blob/master/photos/person.jpg" target="_blank" rel="noopener">github目录</a></li><li>关键一步：点击项目上端的<strong>release</strong> 创建版本：<br><img alt="release的创建简介" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/photos/release_v1.jpg" class="lozad"></li><li>创建好后，点击进入图片链接：<br>那我的做例子，进入github照片路径为：<br><a href="https://github.com/JSK520/blog_web/blob/v1.1/photos/release_v1.jpg" target="_blank" rel="noopener">https://github.com/JSK520/blog_web/blob/v1.1/photos/release_v1.jpg</a></li><li>把对应路径变更为以下方式即可<br><a href="https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/photos/release_v1.jpg" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/photos/release_v1.jpg</a></li></ol><p>仔细看我们发现：<br><a href="https://github.com/JSK520/blog_web/blob/v1.1/" target="_blank" rel="noopener">https://github.com/JSK520/blog_web/blob/v1.1/</a><br>这个前缀替换成了<br><a href="https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/" target="_blank" rel="noopener">https://cdn.jsdelivr.net/gh/JSK520/blog_web@v1.1/</a><br>而 /photos/release_v1.jpg 是github的文件名</p><hr><center>谢谢你的支持~~</center><center class="half">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/wechat_shikai.jpg" class="lozad">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/alipay_shikai.jpg" class="lozad"></center>]]></content>
+      
+      
+      <categories>
+          
+          <category> jsdelivr </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> jsdelivr </tag>
             
         </tags>
       
