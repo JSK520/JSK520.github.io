@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>spark源码系列 - 编译</title>
+      <link href="/posts/6423d1c7/"/>
+      <url>/posts/6423d1c7/</url>
+      
+        <content type="html"><![CDATA[<p>修改pom.xml配置</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;repositories&gt;</span><br><span class="line">      &lt;repository&gt;</span><br><span class="line">          &lt;id&gt;alimaven&lt;/id&gt;</span><br><span class="line">          &lt;name&gt;aliyun maven&lt;/name&gt;</span><br><span class="line">          &lt;url&gt;http://maven.aliyun.com/nexus/content/repositories/central/&lt;/url&gt;</span><br><span class="line">          &lt;releases&gt;</span><br><span class="line">              &lt;enabled&gt;true&lt;/enabled&gt;</span><br><span class="line">          &lt;/releases&gt;</span><br><span class="line">          &lt;snapshots&gt;</span><br><span class="line">              &lt;enabled&gt;false&lt;/enabled&gt;</span><br><span class="line">          &lt;/snapshots&gt;</span><br><span class="line">      &lt;/repository&gt;</span><br><span class="line">  &lt;/repositories&gt;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">example下的pom.xml</span><br><span class="line">&lt;scope&gt;provided&lt;/scope&gt;</span><br><span class="line">改成</span><br><span class="line">&lt;scope&gt;compile&lt;/scope&gt;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;com.google.guava&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;guava&lt;/artifactId&gt;</span><br><span class="line">      &lt;scope&gt;compile&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;jetty-util&lt;/artifactId&gt;</span><br><span class="line">      &lt;scope&gt;compile&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;jetty-server&lt;/artifactId&gt;</span><br><span class="line">      &lt;scope&gt;compile&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;jetty-servlet&lt;/artifactId&gt;</span><br><span class="line">      &lt;scope&gt;compile&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;jetty-security&lt;/artifactId&gt;</span><br><span class="line">      &lt;scope&gt;compile&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br><span class="line">    &lt;dependency&gt;</span><br><span class="line">      &lt;groupId&gt;org.eclipse.jetty&lt;/groupId&gt;</span><br><span class="line">      &lt;artifactId&gt;jetty-http&lt;/artifactId&gt;</span><br><span class="line">      &lt;scope&gt;compile&lt;/scope&gt;</span><br><span class="line">    &lt;/dependency&gt;</span><br></pre></td></tr></table></figure><hr><center>创作不易，谢谢你的支持~~</center><center class="half">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/wechat_shikai.jpg" class="lozad">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/alipay_shikai.jpg" class="lozad"></center>]]></content>
+      
+      
+      <categories>
+          
+          <category> spark </category>
+          
+          <category> 源码 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> spark </tag>
+            
+            <tag> 源码 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>计算机网络 - 浏览器数据包的http流程</title>
       <link href="/posts/1ea2c976/"/>
       <url>/posts/1ea2c976/</url>
