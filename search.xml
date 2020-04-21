@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>post-calculate-code-Linked-1</title>
+      <link href="/posts/cb002191/"/>
+      <url>/posts/cb002191/</url>
+      
+        <content type="html"><![CDATA[<p>循环链表，并支持增删查：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CycleLinked</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Node header;</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Node</span></span>&#123;</span><br><span class="line">        <span class="keyword">public</span> String data;</span><br><span class="line">        <span class="keyword">private</span> Node next;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(String data)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.data = data;</span><br><span class="line">            <span class="keyword">this</span>.next = <span class="keyword">null</span>;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">()</span></span>&#123;&#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">CycleLinked</span><span class="params">(String data)</span></span>&#123;</span><br><span class="line">        header = <span class="keyword">new</span> Node(data);</span><br><span class="line">        header.next = header;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//在环末尾增加某个值的节点</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addNode</span><span class="params">(String data)</span></span>&#123;</span><br><span class="line">        Node tmp = header;</span><br><span class="line">        Node newNode = <span class="keyword">new</span> Node(data);</span><br><span class="line">        <span class="keyword">if</span>(header.next == header)&#123;</span><br><span class="line">            header.next = newNode;</span><br><span class="line">            newNode.next = header;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">while</span> (tmp.next != header) &#123;</span><br><span class="line">                tmp = tmp.next;</span><br><span class="line">            &#125;</span><br><span class="line">            tmp.next = newNode;</span><br><span class="line">            newNode.next = header;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//删除某个值的节点</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">deleteNode</span><span class="params">(String data)</span></span>&#123;</span><br><span class="line">        Node tmp = header;</span><br><span class="line">        <span class="keyword">while</span>(tmp.next != header)&#123;</span><br><span class="line">            <span class="keyword">if</span>(tmp.next.data.equals(data))&#123;</span><br><span class="line">                tmp.next = tmp.next.next;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                tmp = tmp.next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//查找是否包含某个值</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isContains</span><span class="params">(String data)</span></span>&#123;</span><br><span class="line">        Node tmp = header;</span><br><span class="line">        <span class="keyword">while</span>(tmp.next != header)&#123;</span><br><span class="line">            tmp = tmp.next;</span><br><span class="line">            <span class="keyword">if</span>(tmp.next.data.equals(data))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//打印当前链表</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Node tmp = header;</span><br><span class="line">        <span class="keyword">while</span>(tmp.next != header)&#123;</span><br><span class="line">            System.out.println(tmp.data);</span><br><span class="line">            System.out.println(<span class="string">"--&gt;"</span>);</span><br><span class="line">            tmp = tmp.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 循环链表</span></span><br><span class="line">        System.out.println(header.data);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//返回当前链表大小</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> size = <span class="number">0</span>;</span><br><span class="line">        Node tmp = header;</span><br><span class="line">        <span class="keyword">while</span>(tmp.next != header)&#123;</span><br><span class="line">            size ++;</span><br><span class="line">            tmp = tmp.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><hr><center>创作不易，谢谢你的支持~~</center><center class="half">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/wechat_shikai.jpg" class="lozad">    <img width="300" data-src="https://cdn.jsdelivr.net/gh/JSK520/blog_web@1.1/photos/alipay_shikai.jpg" class="lozad"></center>]]></content>
+      
+      
+      <categories>
+          
+          <category> 算法 </category>
+          
+          <category> 链表 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 算法 </tag>
+            
+            <tag> 链表 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>spark源码系列 - 编译</title>
       <link href="/posts/6423d1c7/"/>
       <url>/posts/6423d1c7/</url>
@@ -490,9 +519,9 @@
       
         <tags>
             
-            <tag> jvm </tag>
-            
             <tag> java </tag>
+            
+            <tag> jvm </tag>
             
             <tag> oom </tag>
             
@@ -554,9 +583,9 @@
       
         <tags>
             
-            <tag> java </tag>
-            
             <tag> 算法 </tag>
+            
+            <tag> java </tag>
             
             <tag> 优先级队列 </tag>
             
